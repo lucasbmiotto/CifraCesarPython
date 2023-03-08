@@ -17,7 +17,7 @@ def cifra_cesar(texto, chave, modo):
     
     return resultado
 
-# Criando Funções de encript e descript
+# Criando Funções de encript, descript e limpar
 def on_click_encriptar():
     mensagem = entrada_mensagem.get()
     chave = int(entrada_chave.get())
@@ -30,6 +30,11 @@ def on_click_desencriptar():
     chave = int(entrada_chave.get())
     mensagem_desencriptada = cifra_cesar(mensagem, chave, "descriptar")
     resultado.config(text=mensagem_desencriptada)
+
+def on_click_limpar():
+    entrada_mensagem.delete(0, 'end')
+    entrada_chave.delete(0, 'end')
+    resultado.config(text="")
 
 # ||||||||||   CRIAÇÃO DA PARTE GRÁFICA   ||||||||||
 
@@ -51,13 +56,15 @@ label_chave.pack(side=tk.LEFT)
 entrada_chave = tk.Entry(frame_chave, font=("Helvetica", 16), width=5)
 entrada_chave.pack(side=tk.LEFT, padx=10)
 
-# Criar os botões para encriptar e desencriptar
+# Criar os botões para encriptar, desencriptar e limpar
 frame_botoes = tk.Frame(janela, bg="#F5F5F5")
 frame_botoes.pack(pady=20)
 botao_encriptar = tk.Button(frame_botoes, text="Encriptar", font=("Helvetica", 16), command=on_click_encriptar)
 botao_encriptar.pack(side=tk.LEFT, padx=20)
 botao_desencriptar = tk.Button(frame_botoes, text="Desencriptar", font=("Helvetica", 16), command=on_click_desencriptar)
 botao_desencriptar.pack(side=tk.LEFT, padx=20)
+botao_limpar = tk.Button(frame_botoes, text="Limpar", font=("Helvetica", 16), command=on_click_limpar)
+botao_limpar.pack(side=tk.LEFT, padx=20)
 
 # Criar a entrada para a mensagem
 label_mensagem = tk.Label(janela, text="Mensagem:", font=("Helvetica", 16), bg="#F5F5F5")
