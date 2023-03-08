@@ -1,3 +1,5 @@
+import tkinter as tk
+
 # Definindo Chave, texto , descriptar e incriptar 
 def cifra_cesar(texto, chave, modo):
     resultado = ""
@@ -15,20 +17,23 @@ def cifra_cesar(texto, chave, modo):
     
     return resultado
 
-# Pedir entrada do usuário
-mensagem = input("Digite a mensagem: ")
-chave = int(input("Digite a chave (um número inteiro positivo): "))
-modo = input("Deseja encriptar ou descriptar? ").lower()
-
-# Validar entrada do usuário
-if modo not in ["encriptar", "descriptar"]:
-    print("Modo inválido. Use 'encriptar' ou 'descriptar'.")
-    exit()
-
-# Chamar a função de acordo com a escolha do usuário
-if modo == "encriptar":
+# Criando Funções de encript e descript
+def on_click_encriptar():
+    mensagem = entrada_mensagem.get()
+    chave = int(entrada_chave.get())
     mensagem_encriptada = cifra_cesar(mensagem, chave, "encriptar")
-    print("Mensagem encriptada:", mensagem_encriptada)
-else:
+    resultado.config(text=mensagem_encriptada)
+
+
+def on_click_desencriptar():
+    mensagem = entrada_mensagem.get()
+    chave = int(entrada_chave.get())
     mensagem_desencriptada = cifra_cesar(mensagem, chave, "descriptar")
-    print("Mensagem desencriptada:", mensagem_desencriptada)
+    resultado.config(text=mensagem_desencriptada)
+
+# Criar a janela
+janela = tk.Tk()
+janela.title("Cifra de Cesar Python")
+
+# Loop da janela
+janela.mainloop()
