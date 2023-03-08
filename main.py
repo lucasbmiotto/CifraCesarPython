@@ -31,9 +31,37 @@ def on_click_desencriptar():
     mensagem_desencriptada = cifra_cesar(mensagem, chave, "descriptar")
     resultado.config(text=mensagem_desencriptada)
 
+# ||||||||||   CRIAÇÃO DA PARTE GRÁFICA   ||||||||||
+
 # Criar a janela
 janela = tk.Tk()
 janela.title("Cifra de Cesar Python")
+
+# Criar o título
+titulo = tk.Label(janela, text="Cifra de Cesar Python", font=("Helvetica", 16, "bold"), pady=20)
+titulo.pack()
+
+# Criar a entrada para a chave
+label_chave = tk.Label(janela, text="Chave:")
+label_chave.pack()
+entrada_chave = tk.Entry(janela)
+entrada_chave.pack()
+
+# Criar os botões para encriptar e desencriptar
+botao_encriptar = tk.Button(janela, text="Encriptar", command=on_click_encriptar)
+botao_encriptar.pack(side=tk.LEFT, padx=20, pady=20)
+botao_desencriptar = tk.Button(janela, text="Desencriptar", command=on_click_desencriptar)
+botao_desencriptar.pack(side=tk.LEFT, padx=20, pady=20)
+
+# Criar a entrada para a mensagem
+label_mensagem = tk.Label(janela, text="Mensagem:")
+label_mensagem.pack()
+entrada_mensagem = tk.Entry(janela)
+entrada_mensagem.pack()
+
+# Criar o resultado
+resultado = tk.Label(janela, text="", font=("Helvetica", 14), pady=20)
+resultado.pack()
 
 # Loop da janela
 janela.mainloop()
