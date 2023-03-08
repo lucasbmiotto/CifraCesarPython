@@ -35,32 +35,37 @@ def on_click_desencriptar():
 
 # Criar a janela
 janela = tk.Tk()
+janela.geometry("500x400")
 janela.title("Cifra de Cesar Python")
 
 # Criar o título
-titulo = tk.Label(janela, text="Cifra de Cesar Python", font=("Helvetica", 16, "bold"), pady=20)
+titulo = tk.Label(janela, text="Cifra de Cesar Python", font=("Helvetica", 20, "bold"), pady=20)
 titulo.pack()
 
-# Criar a entrada para a chave
-label_chave = tk.Label(janela, text="Chave:")
-label_chave.pack()
-entrada_chave = tk.Entry(janela)
-entrada_chave.pack()
+# Criar o frame para a entrada da chave
+frame_chave = tk.Frame(janela)
+frame_chave.pack(pady=10)
+label_chave = tk.Label(frame_chave, text="Chave:", font=("Helvetica", 14))
+label_chave.pack(side=tk.LEFT)
+entrada_chave = tk.Entry(frame_chave, font=("Helvetica", 14), width=5)
+entrada_chave.pack(side=tk.LEFT, padx=10)
 
 # Criar os botões para encriptar e desencriptar
-botao_encriptar = tk.Button(janela, text="Encriptar", command=on_click_encriptar)
-botao_encriptar.pack(side=tk.LEFT, padx=20, pady=20)
-botao_desencriptar = tk.Button(janela, text="Desencriptar", command=on_click_desencriptar)
-botao_desencriptar.pack(side=tk.LEFT, padx=20, pady=20)
+frame_botoes = tk.Frame(janela)
+frame_botoes.pack(pady=20)
+botao_encriptar = tk.Button(frame_botoes, text="Encriptar", font=("Helvetica", 14), command=on_click_encriptar)
+botao_encriptar.pack(side=tk.LEFT, padx=20)
+botao_desencriptar = tk.Button(frame_botoes, text="Desencriptar", font=("Helvetica", 14), command=on_click_desencriptar)
+botao_desencriptar.pack(side=tk.LEFT, padx=20)
 
 # Criar a entrada para a mensagem
-label_mensagem = tk.Label(janela, text="Mensagem:")
+label_mensagem = tk.Label(janela, text="Mensagem:", font=("Helvetica", 14))
 label_mensagem.pack()
-entrada_mensagem = tk.Entry(janela)
+entrada_mensagem = tk.Entry(janela, font=("Helvetica", 14), width=40)
 entrada_mensagem.pack()
 
 # Criar o resultado
-resultado = tk.Label(janela, text="", font=("Helvetica", 14), pady=20)
+resultado = tk.Label(janela, text="", font=("Helvetica", 16), pady=20)
 resultado.pack()
 
 # Loop da janela
