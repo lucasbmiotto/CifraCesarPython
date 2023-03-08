@@ -15,10 +15,20 @@ def cifra_cesar(texto, chave, modo):
     
     return resultado
 
-# Teste de Cifra
-texto_original = "Hello"
-chave = 3
-texto_encriptado = cifra_cesar(texto_original, chave, "encriptar")
-print("Texto encriptado:", texto_encriptado)
-texto_desencriptado = cifra_cesar(texto_encriptado, chave, "descriptar")
-print("Texto desencriptado:", texto_desencriptado)
+# Pedir entrada do usuário
+mensagem = input("Digite a mensagem: ")
+chave = int(input("Digite a chave (um número inteiro positivo): "))
+modo = input("Deseja encriptar ou descriptar? ").lower()
+
+# Validar entrada do usuário
+if modo not in ["encriptar", "descriptar"]:
+    print("Modo inválido. Use 'encriptar' ou 'descriptar'.")
+    exit()
+
+# Chamar a função de acordo com a escolha do usuário
+if modo == "encriptar":
+    mensagem_encriptada = cifra_cesar(mensagem, chave, "encriptar")
+    print("Mensagem encriptada:", mensagem_encriptada)
+else:
+    mensagem_desencriptada = cifra_cesar(mensagem, chave, "descriptar")
+    print("Mensagem desencriptada:", mensagem_desencriptada)
